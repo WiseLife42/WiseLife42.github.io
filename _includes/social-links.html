@@ -36,4 +36,10 @@
             <i class="fa-regular fa-envelope"></i>
         </a>
     {% endif %}
+    
+    {% if site.tryhackme %}
+    <a class="link" data-title="tryhackme.com/{{ site.tryhackme }}" href="https://tryhackme.com/{{ site.tryhackme }}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tryhackme"></i>
+    </a>
+    {% endif %}
 </div>
