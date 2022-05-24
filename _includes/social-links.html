@@ -7,6 +7,12 @@
         </a>
     {% endif %}
 
+    {% if site.rootme %}
+    <a class="link" data-title="root-me.org/{{ site.rootme }}" href="https://root-me.org/{{ site.rootme }}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-rootme"></i>
+    </a>
+    {% endif %}
+
     {% if site.twitter %}
         <a class="link" data-title="twitter.com/{{ site.twitter }}" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">
             <i class="fa-brands fa-twitter"></i>
@@ -36,10 +42,10 @@
             <i class="fa-regular fa-envelope"></i>
         </a>
     {% endif %}
-    
+
     {% if site.tryhackme %}
-        <a class="link" data-title="tryhackme.com/{{ site.tryhackme }}" href="https://tryhackme.com/{{ site.tryhackme }}" target="_blank" rel="noopener">
-            <i class="fa-brands fa-tryhackme"></i>
-        </a>
+    <a class="link" data-title="tryhackme.com/{{ site.tryhackme }}" href="https://tryhackme.com/{{ site.tryhackme }}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tryhackme"></i>
+    </a>
     {% endif %}
 </div>
