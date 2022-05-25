@@ -1,5 +1,5 @@
 ---
-title: "[TryHackMe][CompTIA_Pentest+][Attacktive_Directory]"
+title: "[TryHackMe][CompTIA_Pentest+][Active_Directory_Basics]"
 layout: post
 date: 2022-05-25 08:00
 image: /assets/images/tryhackme.png
@@ -10,7 +10,7 @@ tag:
 - Local-Host vulnerabilities
 category: blog
 author: Safak AYDIN
-description: Attacktive_Directory
+description: Active_Directory_Basics
 ---
 
 ## Summary:
