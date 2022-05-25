@@ -22,7 +22,7 @@ Learn the basics of Active Directory and how it is used in the real world today.
 - [Welcome to Attacktive Directory](#welcome-to-attacktive-directory)
 - [Enumerating Users via Kerberos](#enumerating-users-via-kerberos)
 - [Abusing Kerberos](#abusing-kerberos)
-- [Back to the Basics](#back_to_the_basics)
+- [Back to the Basics](#back-to-the-basics)
 - [Elevating Privileges within the Domain](#elevating-privileges-within-the-domain)
 - [Flag Submission Panel](#flag-submission-panel)
 
