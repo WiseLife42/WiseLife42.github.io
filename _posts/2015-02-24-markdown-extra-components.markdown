@@ -1,50 +1,66 @@
 ---
-title: "Markdown Extra Components"
+title: "[TryHackMe][CompTIA_Pentest+][Attacktive_Directory]"
 layout: post
-date: 2016-02-24 22:48
-image: /assets/images/markdown.jpg
+date: 2022-05-25 08:00
+image: /assets/images/tryhackme.png
 headerImage: false
 tag:
-- markdown
-- components
-- extra
+- TryHackMe
+- CompTIA_Pentest+
+- Local-Host vulnerabilities
 category: blog
-author: jamesfoster
-description: Markdown summary with different options
+author: Safak AYDIN
+description: Attacktive_Directory
 ---
 
 ## Summary:
 
-You can pick as item to see how to apply in markdown.
+Learn the basics of Active Directory and how it is used in the real world today.
 
-#### Especial Elements
-- [Evidence](#evidence)
-- [Side-by-Side](#side-by-side)
-- [Star](#star)
-- [Especial Breaker](#especial-breaker)
-- [Spoiler](#spoiler)
-
-#### External Elements
-- [Gist](#gist)
-- [Codepen](#codepen)
-- [Slideshare](#slideshare)
-- [Videos](#videos)
+#### Tasks
+- [Setup](#Setup)
+- [Welcome to Attacktive Directory](#Welcome_to_Attacktive_Directory)
+- [Enumerating Users via Kerberos](#Enumerating_Users_via_Kerberos)
+- [Abusing Kerberos](#Abusing_Kerberos)
+- [Back to the Basics](#Back_to_the_Basics)
+- [Elevating Privileges within the Domain](#Elevating_Privileges_within_the_Domain)
+- [Flag Submission Panel](#Flag_Submission_Panel)
 
 ---
 
-## Evidence
-
-You can try the evidence!
-
-<span class="evidence">Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</span>
+## Setup
 
 {% highlight html %}
-<span class="evidence">Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</span>
+# sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket
+# sudo pip3 install -r /opt/impacket/requirements.txt
+# cd /opt/impacket/ 
+# sudo pip3 install .
+# sudo python3 setup.py install
+{% endhighlight %}
+
+## Welcome_to_Attacktive_Directory
+
+**What tool will allow us to enumerate port 139/445?**
+
+{% highlight html %}
+Answer : enum4linux
+{% endhighlight %}
+
+**What is the NetBIOS-Domain Name of the machine?**
+
+{% highlight html %}
+Answer : THM-AD
+{% endhighlight %}
+
+**What invalid TLD do people commonly use for their Active Directory Domain?**
+
+{% highlight html %}
+Answer : .local
 {% endhighlight %}
 
 ---
 
-## Side-by-side
+## Enumerating_Users_via_Kerberos
 
 Like the [Medium](https://medium.com/) component.
 
@@ -102,7 +118,7 @@ Like the [Medium](https://medium.com/) component.
 
 ---
 
-## Star
+## Abusing_Kerberos
 
 You can give evidence to a post. Just add the tag to the markdown file.
 
@@ -112,7 +128,7 @@ star: true
 
 ---
 
-## Especial Breaker
+## Back_to_the_Basics
 
 You can add a especial *hr* to your text.
 
@@ -124,7 +140,7 @@ You can add a especial *hr* to your text.
 
 ---
 
-## Spoiler
+## Elevating_Privileges_within_the_Domain
 
 You can add an especial hidden content that appears on hover.
 
@@ -136,7 +152,7 @@ You can add an especial hidden content that appears on hover.
 
 ---
 
-## Gist
+## Flag_Submission_Panel
 
 You can add Gists from github.
 
@@ -147,46 +163,6 @@ You can add Gists from github.
 {% gist sergiokopplin/91ff4220480727b47224245ee2e9c291 %}
 
 ---
-
-## Codepen
-
-You can add Pens from Codepen.
-
-{% highlight html %}
-<p data-height="268" data-theme-id="0" data-slug-hash="gfdDu" data-default-tab="result" data-user="chriscoyier" class='codepen'>
-    See the Pen <a href='https://codepen.io/chriscoyier/pen/gfdDu/'>Crappy Recreation of the Book Cover of *The Flame Alphabet*</a> by Chris Coyier (<a href='https://codepen.io/chriscoyier'>@chriscoyier</a>) on <a href='https://codepen.io'>CodePen</a>.
-</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-{% endhighlight %}
-
-<p data-height="268" data-theme-id="0" data-slug-hash="gfdDu" data-default-tab="result" data-user="chriscoyier" class='codepen'>See the Pen <a href='https://codepen.io/chriscoyier/pen/gfdDu/'>Crappy Recreation of the Book Cover of *The Flame Alphabet*</a> by Chris Coyier (<a href='https://codepen.io/chriscoyier'>@chriscoyier</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
----
-
-## Slideshare
-
-Add your presentations here!
-
-{% highlight html %}
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/hqDhSJoWkrHe7l" width="560" height="310" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-{% endhighlight %}
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/hqDhSJoWkrHe7l" width="560" height="310" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-
----
-
-## Videos
-
-Do you want some videos? Youtube, Vimeo or Vevo? Copy the embed code and paste on your post!
-
-**Example**
-
-{% highlight html %}
-<iframe width="560" height="310" src="https://www.youtube.com/embed/r7XhWUDj-Ts" frameborder="0" allowfullscreen></iframe>
-{% endhighlight %}
-
-<iframe width="560" height="310" src="https://www.youtube.com/embed/r7XhWUDj-Ts" frameborder="0" allowfullscreen></iframe>
 
 [1]: https://daringfireball.net/projects/markdown/
 [2]: https://www.fileformat.info/info/unicode/char/2163/index.htm
