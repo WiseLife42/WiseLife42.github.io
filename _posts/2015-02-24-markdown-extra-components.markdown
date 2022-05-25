@@ -38,7 +38,7 @@ Learn the basics of Active Directory and how it is used in the real world today.
 # sudo python3 setup.py install
 {% endhighlight %}
 
-## Welcome_to_Attacktive_Directory
+## Welcome to Attacktive Directory
 
 **Question :** What tool will allow us to enumerate port 139/445?
 
