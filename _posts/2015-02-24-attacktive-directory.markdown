@@ -15,7 +15,7 @@ description: Attacktive_Directory
 
 ## Summary:
 
-Learn the basics of Active Directory and how it is used in the real world today.
+99% of Corporate networks run off of AD. But can you exploit a vulnerable Domain Controller ?
 
 #### Tasks
 - [Setup](#setup)
