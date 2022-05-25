@@ -7,7 +7,7 @@ headerImage: false
 tag:
 - TryHackMe
 - CompTIA_Pentest+
-- Local-Host vulnerabilities
+- Local-host vulnerabilities
 category: blog
 author: Safak AYDIN
 description: Attacktive_Directory
