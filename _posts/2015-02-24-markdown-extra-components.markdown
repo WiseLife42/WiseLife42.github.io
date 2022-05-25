@@ -40,127 +40,163 @@ Learn the basics of Active Directory and how it is used in the real world today.
 
 ## Welcome_to_Attacktive_Directory
 
-**What tool will allow us to enumerate port 139/445?**
+**Question :** What tool will allow us to enumerate port 139/445?
 
 {% highlight html %}
-Answer : enum4linux
+**Answer :** enum4linux
 {% endhighlight %}
 
-**What is the NetBIOS-Domain Name of the machine?**
+**Question :** What is the NetBIOS-Domain Name of the machine?
 
 {% highlight html %}
-Answer : THM-AD
+**Answer :** THM-AD
 {% endhighlight %}
 
-**What invalid TLD do people commonly use for their Active Directory Domain?**
+**Question :** What invalid TLD do people commonly use for their Active Directory Domain?
 
 {% highlight html %}
-Answer : .local
+**Answer :** .local
 {% endhighlight %}
 
 ---
 
 ## Enumerating_Users_via_Kerberos
 
-Like the [Medium](https://medium.com/) component.
-
-**Image** on the left and **Text** on the right:
+**Question :** What command within Kerbrute will allow us to enumerate valid usernames?
 
 {% highlight html %}
-<div class="side-by-side">
-    <div class="toleft">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
-        <figcaption class="caption">Photo by John Doe</figcaption>
-    </div>
-
-    <div class="toright">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-</div>
+**Answer :** userenum
 {% endhighlight %}
 
-<div class="side-by-side">
-    <div class="toleft">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
-        <figcaption class="caption">Photo by John Doe</figcaption>
-    </div>
-
-    <div class="toright">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-</div>
-
-**Text** on the left and **Image** on the right:
+**Question :** What notable account is discovered? (These should jump out at you)
 
 {% highlight html %}
-<div class="side-by-side">
-    <div class="toleft">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-
-    <div class="toright">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
-        <figcaption class="caption">Photo by John Doe</figcaption>
-    </div>
-</div>
+**Answer :** svc-admin
 {% endhighlight %}
 
-<div class="side-by-side">
-    <div class="toleft">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
+**Question :** What is the other notable account is discovered? (These should jump out at you)
 
-    <div class="toright">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
-        <figcaption class="caption">Photo by John Doe</figcaption>
-    </div>
-</div>
+{% highlight html %}
+**Answer :** backup
+{% endhighlight %}
 
 ---
 
 ## Abusing_Kerberos
 
-You can give evidence to a post. Just add the tag to the markdown file.
+**Question :** We have two user accounts that we could potentially query a ticket from. Which user account can you query a ticket from with no password?
 
 {% highlight raw %}
-star: true
+**Answer :** svc-admin
+{% endhighlight %}
+
+**Question :** Looking at the Hashcat Examples Wiki page, what type of Kerberos hash did we retrieve from the KDC? (Specify the full name)
+
+{% highlight raw %}
+**Answer :** Kerberos 5 AS-REP etype 23
+{% endhighlight %}
+
+**Question :** What mode is the hash?
+
+{% highlight raw %}
+**Answer :** 18200
+{% endhighlight %}
+
+**Question :** Now crack the hash with the modified password list provided, what is the user accounts password?
+
+{% highlight raw %}
+**Answer :** management2005
 {% endhighlight %}
 
 ---
 
 ## Back_to_the_Basics
 
-You can add a especial *hr* to your text.
+**Question :** What utility can we use to map remote SMB shares?
 
-{% highlight html %}
-<div class="breaker"></div>
+{% highlight raw %}
+**Answer :** smbclient
 {% endhighlight %}
 
-<div class="breaker"></div>
+**Question :** Which option will list shares?
+
+{% highlight raw %}
+**Answer :** -L
+{% endhighlight %}
+
+**Question :** How many remote shares is the server listing?
+
+{% highlight raw %}
+**Answer :** 6
+{% endhighlight %}
+
+**Question :** There is one particular share that we have access to that contains a text file. Which share is it?
+
+{% highlight raw %}
+**Answer :** backup
+{% endhighlight %}
+
+**Question :** What is the content of the file?
+
+{% highlight raw %}
+**Answer :** YmFja3VwQHNwb29reXNlYy5sb2NhbDpiYWNrdXAyNTE3ODYw
+{% endhighlight %}
+
+**Question :** Decoding the contents of the file, what is the full contents?
+
+{% highlight raw %}
+**Answer :** backup@spookysec.local:backup2517860
+{% endhighlight %}
 
 ---
 
 ## Elevating_Privileges_within_the_Domain
 
-You can add an especial hidden content that appears on hover.
+**Question :** What method allowed us to dump NTDS.DIT?
 
-{% highlight html %}
-<div class="spoiler"><p>your content</p></div>
+{% highlight raw %}
+**Answer :** DRSUAPI
 {% endhighlight %}
 
-<div class="spoiler"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+**Question :** What is the Administrators NTLM hash?
+
+{% highlight raw %}
+**Answer :** 0e0363213e37b94221497260b0bcb4fc
+{% endhighlight %}
+
+**Question :** What method of attack could allow us to authenticate as the user without the password?
+
+{% highlight raw %}
+**Answer :** Pass The Hash
+{% endhighlight %}
+
+**Question :** Using a tool called Evil-WinRM what option will allow us to use a hash?
+
+{% highlight raw %}
+**Answer :** -H
+{% endhighlight %}
 
 ---
 
 ## Flag_Submission_Panel
 
-You can add Gists from github.
+**Question :** svc-admin 
 
 {% highlight raw %}
-{ % gist sergiokopplin/91ff4220480727b47224245ee2e9c291 % }
+**Answer :** TryHackMe{K3rb3r0s_Pr3_4uth}
 {% endhighlight %}
 
-{% gist sergiokopplin/91ff4220480727b47224245ee2e9c291 %}
+**Question :** backup
+
+{% highlight raw %}
+**Answer :** TryHackMe{B4ckM3UpSc0tty!}
+{% endhighlight %}
+
+**Question :** Administrator
+
+{% highlight raw %}
+**Answer :** TryHackMe{4ctiveD1rectoryM4st3r}
+{% endhighlight %}
 
 ---
 
