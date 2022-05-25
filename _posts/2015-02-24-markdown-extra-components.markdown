@@ -31,6 +31,7 @@ Learn the basics of Active Directory and how it is used in the real world today.
 ## Setup
 
 {% highlight html %}
+# apt install bloodhound neo4j -y
 # sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket
 # sudo pip3 install -r /opt/impacket/requirements.txt
 # cd /opt/impacket/ 
