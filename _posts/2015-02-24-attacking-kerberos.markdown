@@ -55,11 +55,11 @@ Answer : AS, TGS
 
 ## Enumeration w/ Kerbrute
 
-![image](https://user-images.githubusercontent.com/80531900/170521501-ea85c969-77f7-4d95-afbc-55b96bdb47c0.png)
+![image](https://user-images.githubusercontent.com/80531900/170521501-ea85c969-77f7-4d95-afbc-55b96bdb47c0.png){: class="bigger-image" }
 
 * Pre-requisite :
 {% highlight html %}
-# echo "Machine_IP   CONTROLLER.LOCAL >> /etc/hosts"
+# echo "THM_Machine_IP   CONTROLLER.LOCAL" >> /etc/hosts
 {% endhighlight %}
 
 ![image](https://user-images.githubusercontent.com/80531900/170521628-42d1a23c-a527-4659-936b-1cb0d684bc7c.png)
