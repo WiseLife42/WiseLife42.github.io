@@ -12,3 +12,314 @@ category: blog
 author: Safak AYDIN
 description: Nmap
 ---
+
+## Summary:
+
+An in depth look at scanning with Nmap, a powerful network scanning tool.
+
+#### Tasks
+- [Introduction](#introduction)
+- [Nmap Switches](#nmap-switches)
+- [TCP Connect Scans](#tcp-connect-scans)
+- [SYN Scans](#syn-scans)
+- [UDP Scans](#udp-scans)
+- [NULL, FIN and Xmas](#null-fin-and-xmas)
+- [ICMP Netwok Scanning](#icmp-network-scanning)
+- [Overview](#overview)
+- [Working with the NSE](#working-with-the-nse)
+- [Searching for Scripts](#searching-for-scripts)
+- [Practical](#practical)
+
+---
+
+## Introduction
+
+**Question :** What networking constructs are used to direct traffic to the right application on a server ?
+
+{% highlight html %}
+Answer : Ports
+{% endhighlight %}
+
+**Question :** How many of these are available on any network-enabled computer ?
+
+{% highlight html %}
+Answer : 65535
+{% endhighlight %}
+
+**Question :** [Research] How many of these are considered "well-known"? (These are the "standard" numbers mentioned in the task)
+
+{% highlight html %}
+Answer : 1024
+{% endhighlight %}
+
+## Nmap Switches
+
+**Question :** What is the first switch listed in the help menu for a 'Syn Scan' (more on this later!) ?
+
+{% highlight html %}
+Answer : -sS
+{% endhighlight %}
+
+**Question :** Which switch would you use for a "UDP scan" ?
+
+{% highlight html %}
+Answer : -sU
+{% endhighlight %}
+
+**Question :** If you wanted to detect which operating system the target is running on, which switch would you use ?
+
+{% highlight html %}
+Answer : -O
+{% endhighlight %}
+
+**Question :** Nmap provides a switch to detect the version of the services running on the target. What is this switch ? 
+
+{% highlight html %}
+Answer : -sV
+{% endhighlight %}
+
+**Question :** The default output provided by nmap often does not provide enough information for a pentester. How would you increase the verbosity ? 
+
+{% highlight html %}
+Answer : -v
+{% endhighlight %}
+
+**Question :** Verbosity level one is good, but verbosity level two is better! How would you set the verbosity level to two ? 
+
+{% highlight html %}
+Answer : -vv
+{% endhighlight %}
+
+**Question :** What switch would you use to save the nmap results in three major formats ? 
+
+{% highlight html %}
+Answer : -oA
+{% endhighlight %}
+
+**Question :** What switch would you use to save the nmap results in a "normal" format ? 
+
+{% highlight html %}
+Answer : -oN
+{% endhighlight %}
+
+**Question :** A very useful output format: how would you save results in a "grepable" format? 
+
+{% highlight html %}
+Answer : -oG
+{% endhighlight %}
+
+**Question :** How would you activate this setting ? 
+
+{% highlight html %}
+Answer : -A
+{% endhighlight %}
+
+**Question :** How would you set the timing template to level 5 ? 
+
+{% highlight html %}
+Answer : -T5
+{% endhighlight %}
+
+**Question :** How would you tell nmap to only scan port 80 ? 
+
+{% highlight html %}
+Answer : -p 80
+{% endhighlight %}
+
+**Question :** How would you tell nmap to scan ports 1000-1500 ? 
+
+{% highlight html %}
+Answer : -p 1000-1500
+{% endhighlight %}
+
+**Question :** How would you tell nmap to scan all ports ?
+
+{% highlight html %}
+Answer : -p-
+{% endhighlight %}
+
+**Question :** How would you activate a script from the nmap scripting library (lots more on this later!) 
+
+{% highlight html %}
+Answer : --script
+{% endhighlight %}
+
+**Question :** How would you activate all of the scripts in the "vuln" category ?
+
+{% highlight html %}
+Answer : --script=vuln
+{% endhighlight %}
+
+# Scan Types
+
+## TCP Connect Scans
+
+**Question :** Which RFC defines the appropriate behaviour for the TCP protocol ? 
+
+{% highlight html %}
+Answer : RFC 793
+{% endhighlight %}
+
+**Question :** If a port is closed, which flag should the server send back to indicate this ?
+
+{% highlight html %}
+Answer : RST
+{% endhighlight %}
+
+## SYN Scans
+
+**Question :** There are two other names for a SYN scan, what are they ?
+
+{% highlight html %}
+Answer : Half-Open, Stealth
+{% endhighlight %}
+
+**Question :** Can Nmap use a SYN scan without Sudo permissions (Y/N) ?
+
+{% highlight html %}
+Answer : N
+{% endhighlight %}
+
+## UDP Scans
+
+**Question :** If a UDP port doesn't respond to an Nmap scan, what will it be marked as ?
+
+{% highlight html %}
+Answer : open|filtered
+{% endhighlight %}
+
+**Question :** When a UDP port is closed, by convention the target should send back a "port unreachable" message. Which protocol would it use to do so ?
+
+{% highlight html %}
+Answer : ICMP
+{% endhighlight %}
+
+## NULL, FIN and Xmas
+
+**Question :** Which of the three shown scan types uses the URG flag ?
+
+{% highlight html %}
+Answer : Xmas
+{% endhighlight %} 
+
+**Question :** Why are NULL, FIN and Xmas scans generally used ?
+
+{% highlight html %}
+Answer : Firewall Evasion
+{% endhighlight %} 
+
+**Question :** Which common OS may respond to a NULL, FIN or Xmas scan with a RST for every port ?
+
+{% highlight html %}
+Answer : Microsot Windows
+{% endhighlight %} 
+
+## ICMP Netwok Scanning
+
+**Question :** How would you perform a ping sweep on the 172.16.x.x network (Netmask: 255.255.0.0) using Nmap? (CIDR notation)
+
+{% highlight html %}
+Answer : nmap -sn 172.16.0.0/16
+{% endhighlight %} 
+
+# NSE Scripts
+
+## Overview
+
+**Question :** What language are NSE scripts written in ?
+
+{% highlight html %}
+Answer : Lua
+{% endhighlight %} 
+
+**Question :** Which category of scripts would be a very bad idea to run in a production environment ?
+
+{% highlight html %}
+Answer : Intrusive
+{% endhighlight %} 
+
+## Working with the NSE
+
+**Question :** What optional argument can the ftp-anon.nse script take ?
+
+{% highlight html %}
+Answer : maxlist
+{% endhighlight %}
+
+## Searching for Scripts
+
+**Question :** What is the filename of the script which determines the underlying OS of the SMB server ?
+
+{% highlight html %}
+Answer : smb-os-discovery.nse
+{% endhighlight %}
+
+**Question :** Read through this script. What does it depend on ?
+
+{% highlight html %}
+Answer : smb-brute
+{% endhighlight %}
+
+## Firewall Evasion
+
+**Question :**  Which simple (and frequently relied upon) protocol is often blocked, requiring the use of the -Pn switch ?
+
+{% highlight html %}
+Answer : ICMP
+{% endhighlight %}
+
+**Question :** [Research] Which Nmap switch allows you to append an arbitrary length of random data to the end of packets ?
+
+{% highlight html %}
+Answer : --data-length
+{% endhighlight %}
+
+## Practical
+
+![image](https://user-images.githubusercontent.com/80531900/171593189-ac2702b3-6e78-4820-92d8-c6de8410dd1a.png)
+
+**Question :** Does the target (MACHINE_IP) respond to ICMP (ping) requests (Y/N) ?
+
+{% highlight html %}
+Answer : N
+{% endhighlight %}
+
+![image](https://user-images.githubusercontent.com/80531900/171593272-97cbef9b-1d5b-4f1a-8c75-16f554b24351.png)
+
+**Question :** Perform an Xmas scan on the first 999 ports of the target -- how many ports are shown to be open or filtered ?
+
+{% highlight html %}
+Answer : 999
+{% endhighlight %}
+
+![image](https://user-images.githubusercontent.com/80531900/171593322-7e6013be-b414-4e8d-a876-627fd1eaa1c4.png)
+
+**Question :** There is a reason given for this -- what is it ?
+
+{% highlight html %}
+Answer : No Response
+{% endhighlight %}
+
+![image](https://user-images.githubusercontent.com/80531900/171593472-a809280f-5f37-4ab7-b77d-c5461510f912.png)
+
+**Question :** Perform a TCP SYN scan on the first 5000 ports of the target -- how many ports are shown to be open ?
+
+{% highlight html %}
+Answer : 5
+{% endhighlight %}
+
+![image](https://user-images.githubusercontent.com/80531900/171593531-4ac5858d-9459-479b-9a74-d2283adcb4c5.png)
+
+![image](https://user-images.githubusercontent.com/80531900/171593560-30d5531e-563c-42cb-8e74-d2aff3f3ee51.png)
+
+**Question :** Open Wireshark (see Cryillic's Wireshark Room for instructions) and perform a TCP Connect scan against port 80 on the target, monitoring the results. Make sure you understand what's going on.
+
+![image](https://user-images.githubusercontent.com/80531900/171594495-adbb85b9-28a6-460a-bfc4-1ab38b649b47.png)
+
+![image](https://user-images.githubusercontent.com/80531900/171594513-d1b7a973-d021-44b9-b2d0-e60e9a753e3b.png)
+
+**Question :** Deploy the ftp-anon script against the box. Can Nmap login successfully to the FTP server on port 21 ? (Y/N)
+
+{% highlight html %}
+Answer : Y
+{% endhighlight %}
