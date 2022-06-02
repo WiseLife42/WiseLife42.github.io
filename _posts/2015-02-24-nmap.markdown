@@ -310,7 +310,7 @@ Answer : 5
 
 ![image](https://user-images.githubusercontent.com/80531900/171593531-4ac5858d-9459-479b-9a74-d2283adcb4c5.png)
 
-![image](https://user-images.githubusercontent.com/80531900/171593560-30d5531e-563c-42cb-8e74-d2aff3f3ee51.png)
+![image](https://user-images.githubusercontent.com/80531900/171593560-30d5531e-563c-42cb-8e74-d2aff3f3ee51.png){: class="bigger-image" }
 
 **Question :** Open Wireshark (see Cryillic's Wireshark Room for instructions) and perform a TCP Connect scan against port 80 on the target, monitoring the results. Make sure you understand what's going on.
 
