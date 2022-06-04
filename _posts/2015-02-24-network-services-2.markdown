@@ -262,7 +262,7 @@ Answer : polosmtp.home
 Answer : Postfix
 {% endhighlight %}
 
-![image](https://user-images.githubusercontent.com/80531900/171989045-aa016976-1026-4e3b-8f99-53abd35846bc.png)
+![image](https://user-images.githubusercontent.com/80531900/171989045-aa016976-1026-4e3b-8f99-53abd35846bc.png){: class="bigger-image" }
     
 * Download : https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt
 
